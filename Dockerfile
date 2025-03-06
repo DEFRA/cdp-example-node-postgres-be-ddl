@@ -1,12 +1,9 @@
-FROM defradigital/cdp-perf-test-docker:latest
+FROM liquibase/liquibase:4.31-alpine
 
-WORKDIR /opt/perftest
+COPY ./entrypoint.sh /
+COPY ./get-rds-token /usr/local/bin/get-rds-token
+COPY ./changelog /changelog
 
-COPY scenarios/ ./scenarios/
-COPY entrypoint.sh .
-COPY user.properties .
+ENV LIQUIBASE_COMMAND_CHANGELOG_FILE=/changelog/db.changelog.xml
+ENV LIQUIBASE_SEARCH_PATH=/
 
-ENV S3_ENDPOINT=https://s3.eu-west-2.amazonaws.com
-ENV TEST_SCENARIO=test
-
-ENTRYPOINT [ "./entrypoint.sh" ]
