@@ -1,4 +1,4 @@
-# cdp-perf-test-suite-template
+# cdp-example-node-postgres-be-ddl
 
 A JMeter based test runner for the CDP Platform.
 
