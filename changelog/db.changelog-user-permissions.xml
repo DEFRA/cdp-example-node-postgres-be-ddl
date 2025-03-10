@@ -10,7 +10,7 @@
         http://www.liquibase.org/xml/ns/pro
         http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <changeSet author="liquibase-docs"  id="user-permissions-1" runOrder="last" runAlways="true">
+    <changeSet author="liquibase-docs" id="user-permissions-1" runOrder="last" runAlways="true">
         <sql dbms="postgresql"
                 endDelimiter="\nGO"
                 splitStatements="true"
