@@ -6,9 +6,9 @@ echo "CDP Migration container"
 # Get the RDS token
 if [ -z "$LIQUIBASE_COMMAND_PASSWORD" ]; then
     echo "Getting token from RDS..."
-    TOKEN=$(/usr/local/bin/get-rds-token)
-    echo "token is $TOKEN"
-    export LIQUIBASE_COMMAND_PASSWORD=$(/usr/local/bin/get-rds-token)
+    export LIQUIBASE_COMMAND_PASSWORD=$(aws rds generate-db-auth-token --hostname $DB_HOST --port 5432 --region $AWS_REGION --username $LIQUIBASE_COMMAND_USERNAME)
+
+    echo "token is $LIQUIBASE_COMMAND_PASSWORD"
 else
     echo "Using password from environment variable"
 fi
