@@ -1,11 +1,14 @@
 #!/bin/bash
 set -e
 
+echo "CDP Migration container"
+
 # Get the RDS token
 if [ -z "$LIQUIBASE_COMMAND_PASSWORD" ]; then
     echo "Getting token from RDS..."
-    LIQUIBASE_COMMAND_PASSWORD=$(/usr/local/bin/get-rds-token)
-    export LIQUIBASE_COMMAND_PASSWORD
+    TOKEN=$(/usr/local/bin/get-rds-token)
+    echo "token is $TOKEN"
+    export LIQUIBASE_COMMAND_PASSWORD=$(/usr/local/bin/get-rds-token)
 else
     echo "Using password from environment variable"
 fi
